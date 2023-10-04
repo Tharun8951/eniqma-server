@@ -4,13 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 app.use(express.json())
 
-app.use(
-    cors({
-      origin: [
-        'http://localhost:5173/',
-      ],
-    }),
-  )
+app.use(cors())
 
 const mongoDB = require('./db')
 const productsHandler = require('./Routers/Products.router')
@@ -24,6 +18,9 @@ app.get('/', async (req,res)=>{
 
 app.use('/products', productsHandler)
 
-app.listen(process.env.PORT, ()=>{
-    console.log(`server started at port ${process.env.PORT}`)
+app.listen(4000, ()=>{
+    console.log(`server started at port 4000`)
 })
+// app.listen(process.env.PORT, ()=>{
+//     console.log(`server started at port ${process.env.PORT}`)
+// })
